@@ -11,14 +11,15 @@ const user_checkout = require('./routes/user_checkout.routes');
 const { maintain, check } = require('./shared/middleware');
 const cors = require('cors');
 dotenv.config();
-
+let options = {
+    origin:"*",
+    credentials: true,
+}
 (async () => {
     try {
         app.listen(process.env.PORT, () => console.log("server running at:", process.env.PORT));
         await mongo.connect();
-        app.use(cors({
-            origin: "*"
-        }));
+        app.use(cors(options));
         app.use(express.json());
         app.use(express.urlencoded({ extended: true }))
         app.use(maintain);
