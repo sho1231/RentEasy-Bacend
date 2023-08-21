@@ -24,7 +24,7 @@ let options = {
         app.use(express.urlencoded({ extended: true }))
         app.use(maintain);
         app.get("/testing123", (req, res) => {
-            res.json({ message: 123 });
+           return res.json({ message: 123 });
         })
         app.use("/", non_admin);
         app.use("/admin", admin);
